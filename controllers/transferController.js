@@ -258,12 +258,12 @@ exports.updateTransferStatus = async (req, res) => {
 
     if (!transfer) return res.status(404).json({ message: "Transfer request not found" });
 
-    if (status.toLowerCase() === 'approved') {
-      const teacher = await Teacher.findByPk(transfer.teacherId);
-      if (!teacher) return res.status(404).json({ message: "Teacher not found" });
-      teacher.schoolId = transfer.toSchoolId;
-      await teacher.save();
-    }
+    // if (status.toLowerCase() === 'approved') {
+    //   const teacher = await Teacher.findByPk(transfer.teacherId);
+    //   if (!teacher) return res.status(404).json({ message: "Teacher not found" });
+    //   teacher.schoolId = transfer.toSchoolId;
+    //   await teacher.save();
+    // }
 
     transfer.status = status.toLowerCase();
     transfer.statusReason = reason || "";
