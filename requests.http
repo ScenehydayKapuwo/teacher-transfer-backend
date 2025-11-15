@@ -1,0 +1,136 @@
+### Register a Teacher
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "role": "teacher",
+  "teacherData": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "1johndoe@example.com",
+    "currentSchoolId": 1,
+    "currentPosition": "Math Teacher",
+    "nrc": "523456/78/2",
+    "tsNo": "TS-2025-002",
+    "experience": [{"year":2023,"position":"Assistant Teacher"}],
+    "medicalCertificate": "/uploads/teachers/docs/medical.pdf",
+    "academicQualifications": "/uploads/teachers/docs/academic.pdf",
+    "professionalQualifications": "/uploads/teachers/docs/professional.pdf"
+  }
+}
+
+
+
+### Login User
+POST https://teacher-transfer-backend.onrender.com/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "testadmin",
+  "password": "password123"
+}
+
+
+
+### Create School
+POST http://localhost:4000/api/schools
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Chengwe High",
+  "code": "GVH003",
+  "district": "Lusaka",
+  "province": "Lusaka Province"
+}
+
+
+### Get All Schools
+GET https://teacher-transfer-backend.onrender.com/api/schools
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0YWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJ0ZWFjaGVyUHJvZmlsZUlkIjoyLCJpYXQiOjE3NjE2MzU3ODAsImV4cCI6MTc2MTYzOTM4MH0.nCVuliB5xupaG9ghJ6Tz7HlwsmmfhPpbLD09mmFVk-I
+
+
+
+### Get Single School
+GET http://localhost:4000/api/schools/1
+
+### Update School
+PUT http://localhost:4000/api/schools/1
+Content-Type: application/json
+
+{
+  "name": "Green High School",
+  "district": "Chongwe Central"
+}
+
+### Delete School
+DELETE http://localhost:4000/api/schools/1
+
+
+### Get teachers
+GET http://localhost:4000/api/teachers
+
+### Get teache by ID
+GET http://localhost:4000/api/teachers/8
+
+### Update teacher by ID
+PUT http://localhost:4000/api/teachers/3
+Content-Type: application/json
+Accept: application/json
+
+{
+  "lastName": "Simwawa"
+}
+
+
+### Delete user by ID
+DELETE http://localhost:4000/api/teachers/4
+
+
+### Submit Transfer Request
+POST http://localhost:4000/api/transfers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "teacherId": 3,
+  "toSchoolId": 1
+}
+
+
+### Get All Transfer Requests
+GET http://localhost:4000/api/transfers
+
+### Get Transfer Id ID
+GET http://localhost:4000/api/transfers/3
+
+### Approve Transfer Request
+PUT http://localhost:4000/api/transfers/approve/1
+
+
+### Reject Transfer Request
+PUT http://localhost:4000/api/transfers/reject/1
+
+
+### Send notification
+POST http://localhost:4000/api/notifications
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fromTeacherId": 2,
+  "toTeacherId": 1,
+  "message": "Your you have a new transfer request."
+}
+
+
+
+### Get notifications for user
+GET http://localhost:4000/api/notifications/1
+Accept: application/json
+
+### Mark notification as read
+PUT http://localhost:4000/api/notifications/read/2
+Accept: application/json
