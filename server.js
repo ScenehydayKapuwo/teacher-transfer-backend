@@ -6,6 +6,7 @@ const sequelize = require('./config/db'); // Sequelize instance
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const schoolRoutes = require('./routes/schoolRoutes'); 
+const vacancyRoutes = require('./routes/vacancyRoutes'); 
 const teacherRoutes = require('./routes/teacherRoutes');
 const transferRoutes = require('./routes/transferRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
@@ -25,6 +26,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/stats", statsRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/schools', schoolRoutes);
+app.use('/api/vacancy', vacancyRoutes);
 app.use('/api/teachers', teacherRoutes);
 app.use('/api/transfers', transferRoutes);
 app.use('/api/notifications', notificationRoutes);
