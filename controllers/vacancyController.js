@@ -4,15 +4,16 @@ exports.createVacancy = async (req, res) => {
   try {
     // const { name, code, district, province } = req.body;
     console.log(req.body);
-    const school = req.body.name;
-    const number_of_teachers = req.body.code;
+    const school = req.body.school;
+    const subject = req.body.subject;
+    const number_of_teachers = req.body.number_of_teachers;
     const district = req.body.district;
     const province = req.body.province;
 
     const existing = await Vacancy.findOne({ where: { school } });
     if (existing) return res.status(400).json({ message: 'Vacancy already exists' });
 
-    const vacancy = await Vacancy.create({ school, number_of_teachers, district, province });
+    const vacancy = await Vacancy.create({ school,subject, number_of_teachers, district, province });
     res.status(201).json(vacancy);
   } catch (err) {
     res.status(500).json({ message: err.message });
